@@ -1,13 +1,10 @@
 import type { Hash, Hex } from "viem";
 import type { SignTypedDataParams } from "../account/types.js";
 
-export interface AuthSmartAccountSigner<
-  Inner = any,
-  AuthParams = any,
-  UserDetails = any
-> extends SmartAccountSigner {
+export interface AuthSmartAccountSigner<Inner, AuthParams, UserDetails>
+  extends SmartAccountSigner {
   inner: Inner;
-  user: User<UserDetails> | undefined;
+  user: SmartAccountUser<UserDetails> | undefined;
 
   authenticateUser: (params: AuthParams) => Promise<UserDetails>;
 
@@ -24,8 +21,8 @@ export interface SmartAccountSigner {
   signTypedData: (params: SignTypedDataParams) => Promise<Hex>;
 }
 
-export interface User<UserDetails> {
-  id: string;
+export interface SmartAccountUser<UserDetails> {
+  id: string | undefined;
 
   isAuthenticated: () => Promise<boolean>;
 

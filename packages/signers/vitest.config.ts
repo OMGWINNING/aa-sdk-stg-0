@@ -6,6 +6,7 @@ export default defineProject({
     globals: true,
     setupFiles: ["../../.vitest/setupTests.ts"],
     exclude: [...configDefaults.exclude, "**/e2e-tests/**/*.test.ts"],
-    name: "accounts",
+    name: "signers",
+    environment: "jsdom",
   },
 });

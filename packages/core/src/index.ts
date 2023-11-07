@@ -17,6 +17,7 @@ export { SignerSchema } from "./signer/schema.js";
 export type {
   AuthSmartAccountSigner,
   SmartAccountSigner,
+  SmartAccountUser,
 } from "./signer/types.js";
 export {
   verifyEIP6492Signature,
