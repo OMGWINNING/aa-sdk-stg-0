@@ -18,7 +18,6 @@ export interface SmartAccountSigner<Inner, AuthParams, UserDetails> {
 
 export interface User<UserDetails> {
   id: string;
-  details: UserDetails;
 
   isAuthenticated: () => Promise<boolean>;
 
