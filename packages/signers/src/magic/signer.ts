@@ -56,5 +56,9 @@ export class MagicSigner
     return this.user.getDetails();
   };
 
-  getUserDetails = async () => this.inner.user.getInfo();
+  getUserDetails = async () => {
+    if (!this.user) throw new Error("No User authenticated");
+
+    return this.user.getDetails();
+  };
 }
