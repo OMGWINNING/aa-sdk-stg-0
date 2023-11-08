@@ -23,10 +23,12 @@ export class MagicSigner
   }
 
   getAddress = async () => {
-    const userData = (await this.inner.user.getInfo()).publicAddress;
-    if (userData == null) throw new Error("No address found");
+    if (!this.user) throw new Error("No User authenticated");
 
-    return userData as Hash;
+    const address = (await this.user.getDetails()).publicAddress;
+    if (address == null) throw new Error("No address found");
+
+    return address as Hash;
   };
 
   signMessage = async (msg: Uint8Array | string) => {
