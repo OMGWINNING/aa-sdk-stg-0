@@ -16,7 +16,15 @@ export class MagicUser implements SmartAccountUser<MagicUserMetadata> {
     this.id = userId;
   };
 
-  isAuthenticated = async () => this.id != null && this.inner.user.isLoggedIn();
+  isAuthenticated = async () => {
+    if (this.id == null) throw new Error("No user info found");
 
-  getDetails = async () => this.inner.user.getInfo();
+    return this.inner.user.isLoggedIn();
+  };
+
+  getDetails = async () => {
+    if (this.id == null) throw new Error("No user info found");
+
+    return this.inner.user.getInfo();
+  };
 }
